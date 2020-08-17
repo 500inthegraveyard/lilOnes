@@ -1,3 +1,8 @@
+const ParentKid = require("./parentKid");
+
 module.exports = {
-  Recipe: require("./recipe")
+  DailyRoutine: require("./dailyRoutine"),
+  ParentKid: require("./parentKid"),
+  Kid: require("./kid")
+  
 };

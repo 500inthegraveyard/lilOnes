@@ -6,6 +6,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const apiRoutes = require("./routes/apiRoutes");
 
+const db = require("./models");
+
+
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,11 +18,22 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.use(express.static("publlic"));
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbLilOnes", { useNewUrlParser: true, });
+
+// db.ParentKid.create({ name: "Parents and Kids"})
+//   .then(dbParentKid => {
+//     console.log(dbParentKid);
+//   })
+//   .catch(({message}) => {
+//     console.log(message);
+//   });
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactrecipes",
-  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-);
+// mongoose.connect(
+//   process.env.MONGODB_URI || "mongodb://localhost/reactrecipes",
+//   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true 
+
 
 // Use apiRoutes
 app.use("/api", apiRoutes);
