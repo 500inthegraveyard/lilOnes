@@ -1,2 +1,0 @@
-# lilOnes
-Project3Group
