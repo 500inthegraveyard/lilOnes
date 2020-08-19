@@ -1,8 +1,9 @@
-const ParentKid = require("./parentKid");
-
+// const ParentKid = require("./Parent");
+// Exporting an object containing all of our models
 module.exports = {
-  DailyRoutine: require("./dailyRoutine"),
-  ParentKid: require("./parentKid"),
-  Kid: require("./kid")
+  Report: require("./Report"),
+  Parent: require("./Parent"),
+  Child: require("./Child"),
+  Employee: require("./Employee")
   
 };

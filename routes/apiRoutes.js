@@ -1,26 +1,38 @@
 const router = require("express").Router();
 const db = require("../models");
-const DailyRoutine = require("../models/dailyRoutine");
-const ParentKid = require("../models/parentKid")
 
-router.get("/dailyRoutine", ({body}, res) => {
-  db.DailyRoutine .create(body)
+const Report = require("../models/Report");
+const Parent = require("../models/Parent");
+const Child = require("..child/models/Child");
+
+
+router.get("/Child", ({body}, res) => {
+  db.Child .create(body)
   // .then(({_id}) => db.)
-})
-
-
-
-router.get("/Kid", (req, res) => {
- 
-  db.ParentKid.findOne({
-    kid:
-  })
-    .then(recipes => res.json())
-    .catch(err => res.status(422).end());
 });
 
 
-router.get("/parentKid", (req, res) => {
+
+// router.get("/Child", (req, res) => {
+ 
+//   db.Child.find({
+//     Child:
+//   })
+//     .then(lilOines => res.json())
+//     .catch(err => res.status(422).end());
+// });
+router.get("/Child", (req, res) => {
+  db.Child.find({})
+    .then(Child => {
+      res.json(Child);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+
+router.get("/Child", (req, res) => {
 
 })
 
