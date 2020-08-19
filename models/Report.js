@@ -8,7 +8,7 @@ const reportSchema = new mongoose.Schema({
 // Look up how we can utilize a default feature for the cardDate
   date: Number,
     activities: [{
-      Name: string
+      Name: String,
     }
 
     ],
