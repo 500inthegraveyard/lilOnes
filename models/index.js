@@ -3,7 +3,7 @@
 module.exports = {
   Report: require("./Report"),
   Parent: require("./Parent"),
-  child: require("./child"),
+  Child: require("./Child"),
   Employee: require("./Employee")
   
 };

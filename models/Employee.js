@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
       lastName: String,
       email: String,
       password: String,
-      kids: [
+      
+      child: [
         {
           type: Schema.Types.ObjectId,
           ref:"Child"

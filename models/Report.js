@@ -9,6 +9,10 @@ const reportSchema = new mongoose.Schema({
   date: Number,
     activities: [{
       Name: String,
+      Food: String,
+      Nap: String,
+      Activity: String,
+      Potty: String,
     }
 
     ],
@@ -21,7 +25,7 @@ const reportSchema = new mongoose.Schema({
   //   // diapers:Number,
   // }],
 
-  Child: [
+  child: [
     {
       type: Schema.Types.ObjectId,
       ref:"Child"
