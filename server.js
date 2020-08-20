@@ -9,9 +9,6 @@ const db = require('./config/keys').mongoURI;
 
 // Passport Config
 require('./config/passport')(passport);
-
-// DB Config
-
 // Connect to MongoDB
 mongoose
   .connect(
@@ -24,6 +21,15 @@ mongoose
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 // Express session
 app.use(
@@ -51,5 +57,6 @@ app.use(function(req, res, next) {
 
 // Routes
 app.use('/users', require('./routes/users.js'));
+app.use("/api", apiRoutes);
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

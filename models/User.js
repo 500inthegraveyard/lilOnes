@@ -16,7 +16,17 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  isTeacher: {
+    type: Boolean,
+    required: true
+  },
+  children: [
+    {
+      type: Schema.Types.ObjectId,
+      ref:"Child"
+    }
+  ]
 });
 
 const User = mongoose.model('User', UserSchema);
