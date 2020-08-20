@@ -9,7 +9,7 @@ const Schema = mongoose.Schema;
       email: String,
       password: String,
       
-      child: [
+      children: [
         {
           type: Schema.Types.ObjectId,
           ref:"Child"

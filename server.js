@@ -38,29 +38,29 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbLilOnes", { u
 // Use apiRoutes
 app.use("/api", apiRoutes);
 
-app.get('/api/child', function (req, res) {
-  res.send('Hello World!');
-});
+// app.get('/api/child', function (req, res) {
+//   res.send('Hello World!');
+// });
 
-app.post('/api/child', function ({body}, res) {
-  res.send('Hello World!');
-})
+// app.post('/api/child', function ({body}, res) {
+//   res.send('Hello World!');
+// })
 
-app.delete('/api/child', function ({body}, res) {
-  res.send('Hello World!');
-})
+// app.delete('/api/child', function ({body}, res) {
+//   res.send('Hello World!');
+// })
 
-app.get('/api/repor', function (req, res) {
-  res.send('Hello World!');
-});
+// app.get('/api/report', function (req, res) {
+//   res.send('Hello World!');
+// });
 
-app.post('/api/report', function ({body}, res) {
-  res.send('Hello World!');
-})
+// app.post('/api/report', function ({body}, res) {
+//   res.send('Hello World!');
+// })
 
-app.delete('/api/report', function ({body}, res) {
-  res.send('Hello World!');
-})
+// app.delete('/api/report', function ({body}, res) {
+//   res.send('Hello World!');
+// })
 
 
 

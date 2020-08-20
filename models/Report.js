@@ -7,15 +7,12 @@ const reportSchema = new mongoose.Schema({
 //creat
 // Look up how we can utilize a default feature for the cardDate
   date: Number,
-    activities: [{
-      Name: String,
-      Food: String,
-      Nap: String,
-      Activity: String,
-      Potty: String,
-    }
-
-    ],
+  Food: String,
+  Nap: Number,
+  Recess: String,
+  Potty: String,
+      
+    
     // routines:[{
     // meals: String,
     // behavior: String,
