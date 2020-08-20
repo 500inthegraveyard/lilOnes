@@ -6,7 +6,7 @@ const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 5050;
 const db = require('./config/keys').mongoURI;
-
+const apiRoutes = require('./routes/apiRoutes')
 // Passport Config
 require('./config/passport')(passport);
 // Connect to MongoDB

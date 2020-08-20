@@ -9,7 +9,7 @@ const User = require('../models/User');
 
 // Register
 router.post('/register', (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, isTeacher } = req.body;
   let errors = [];
 
   if (!name || !email || !password) {
@@ -43,7 +43,8 @@ router.post('/register', (req, res) => {
         const newUser = new User({
           name,
           email,
-          password
+          password,
+          isTeacher
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -59,7 +60,7 @@ router.post('/register', (req, res) => {
                 );
                 res.json(user)
               })
-              .catch(err => console.log(err));
+              .catch(err => res.json(err));
           });
         });
       }
