@@ -1,27 +1,16 @@
 const mongoose = require("mongoose");
-const { report } = require("../routes/apiRoutes");
-const { Child } = require(".");
+// const { report } = require("../routes/apiRoutes");
+// const { Child } = require(".");
 const Schema = mongoose.Schema;
 
 const reportSchema = new mongoose.Schema({
-//creat
-// Look up how we can utilize a default feature for the cardDate
-  date: Number,
-  Food: String,
-  Nap: Number,
-  Recess: String,
-  Potty: String,
-      
-    
-    // routines:[{
-    // meals: String,
-    // behavior: String,
-    // activities: String,
-    // message: String,
-  //   // nap:Number,
-  //   // diapers:Number,
-  // }],
 
+  day: String,
+  food: String,
+  nap: Number,
+  activitie: String,
+  message: String,
+      
   child: [
     {
       type: Schema.Types.ObjectId,

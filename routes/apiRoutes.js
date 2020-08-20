@@ -4,6 +4,8 @@ const db = require("../models");
 const Report = require("../models/Report");
 const Parent = require("../models/Parent");
 const Child = require("../models/Child");
+const PassportUser = require("../models/PassportUser");
+
 
 router.get("/child", (req, res) => {
   db.Child.find({}).populate("Reports")
@@ -15,12 +17,12 @@ router.get("/child", (req, res) => {
     });
 });
 
+
 router.put("/child/:id", ({ body, params }, res) => {
-  console.log("Child.put")
   db.Child.findOne(body)
     .then(({ _id }) => {
-      console.log("ParentID",params)
-      console.log(_id)
+      // console.log("ParentID",params)
+      // console.log(_id)
       db.Parent.findByIdAndUpdate(params.id , { $push: { children: _id } }, { new: true })
       .then(dbchild => {
         res.json(dbchild);
@@ -34,11 +36,10 @@ router.put("/child/:id", ({ body, params }, res) => {
 
 
 router.post("/child/:id", ({ body,params }, res) => {
-  console.log("Child.create")
   db.Child.create(body)
     .then(({ _id }) => {
-      console.log("ParentID",params)
-      console.log(_id)
+      // console.log("ParentID",params)
+      // console.log(_id)
       db.Employee.findByIdAndUpdate(params.id , { $push: { children: _id } }, { new: true })
       .then(dbchild => {
         res.json(dbchild);
@@ -75,17 +76,6 @@ router.post("/parent", ({ body }, res) => {
 
 
 
-// 2
-// 3
-// 4
-// ProductModel.findOneAndDelete({ brand: 'Nike' }, function (err) {
-//   if(err) console.log(err);
-//   console.log("Successful deletion");
-// });
-
-
-
-
 router.get("/report", (req, res) => {
   db.Report.find({})
     .then(dbReport => {
@@ -119,47 +109,6 @@ router.delete("/report", ({ body }, res) => {
     });
 });
 
-
-// router.findOne("/child", (req, res) => {
-//     db.Report.find({})
-//     .then(dbReport => {
-//       res.json(dbReport);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-//   });
-
-
-// router.get("/Report", ({body}, res) => {
-//   db.Child .create(body)
-//   // .then(({_id}) => db.)
-// });
-
-
-
-// // router.get("/Child", (req, res) => {
-
-// //   db.Child.find({
-// //     Child:
-// //   })
-// //     .then(lilOines => res.json())
-// //     .catch(err => res.status(422).end());
-// // });
-// router.get("/Child", (req, res) => {
-//   db.Child.find({})
-//     .then(Child => {
-//       res.json(Child);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
-
-
-// router.get("/Child", (req, res) => {
-
-// })
 
 
 module.exports = router;

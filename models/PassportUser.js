@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
     
-    const ParentSchema = Schema({
-  
+    const passportUserSchema = Schema({
+     
       firstName: String,
       lastName: String,
       email: String,
       password: String,
+      isEmployee: Boolean,
+      
       children: [
         {
           type: Schema.Types.ObjectId,
@@ -16,10 +18,7 @@ const Schema = mongoose.Schema;
       ]
     });
     
-  
-  
 
+const PassportUser = mongoose.model("PassportUser", passportUserSchema);
 
-const Parent = mongoose.model("Parent", ParentSchema);
-
-module.exports = Parent;
+module.exports = PassportUser;

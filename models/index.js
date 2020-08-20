@@ -4,6 +4,7 @@ module.exports = {
   Report: require("./Report"),
   Parent: require("./Parent"),
   Child: require("./Child"),
-  Employee: require("./Employee")
+  Employee: require("./Employee"),
+  PassportUser: require("./PassportUser")
   
 };

@@ -6,8 +6,8 @@ mongoose.connect("mongodb://localhost/dbLilOnes", {
   useFindAndModify: false
 });
 
-db.Child.create({})
-.then(() => db.Child.insertMany(childSeed))
+db.PassportUser.create({})
+.then(() => db.PassportUser.insertMany(userSeed))
 .then(data => {
   console.log(data, " records inserted!");
   process.exit(0);
@@ -17,38 +17,49 @@ db.Child.create({})
   process.exit(1);
 });
 
-db.Employee.create({})
-.then(() => db.Employee.insertMany(employeeSeed))
-.then(data => {
-  console.log(data, " records inserted!");
-  process.exit(0);
-})
-.catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+// db.Child.create({})
+// .then(() => db.Child.insertMany(childSeed))
+// .then(data => {
+//   console.log(data, " records inserted!");
+//   process.exit(0);
+// })
+// .catch(err => {
+//   console.error(err);
+//   process.exit(1);
+// });
 
-db.Parent.create({})
-.then(() => db.Parent.insertMany(parentSeed))
-.then(data => {
-  console.log(data, " records inserted!");
-  process.exit(0);
-})
-.catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+// db.Employee.create({})
+// .then(() => db.Employee.insertMany(employeeSeed))
+// .then(data => {
+//   console.log(data, " records inserted!");
+//   process.exit(0);
+// })
+// .catch(err => {
+//   console.error(err);
+//   process.exit(1);
+// });
 
-db.Report.create({})
-.then(() => db.Report.insertMany(reportSeed))
-.then(data => {
-  console.log(data, " records inserted!");
-  process.exit(0);
-})
-.catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+// db.Parent.create({})
+// .then(() => db.Parent.insertMany(parentSeed))
+// .then(data => {
+//   console.log(data, " records inserted!");
+//   process.exit(0);
+// })
+// .catch(err => {
+//   console.error(err);
+//   process.exit(1);
+// });
+
+// db.Report.create({})
+// .then(() => db.Report.insertMany(reportSeed))
+// .then(data => {
+//   console.log(data, " records inserted!");
+//   process.exit(0);
+// })
+// .catch(err => {
+//   console.error(err);
+//   process.exit(1);
+// });
 
 
 

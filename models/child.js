@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const ChildSchema = Schema({
  
-  name: String,
-  last: String,
+  firstName: String,
+  lastName: String,
   reports: [
     {
       type: Schema.Types.ObjectId,
