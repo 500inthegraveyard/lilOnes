@@ -4,20 +4,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const reportSchema = new mongoose.Schema({
-
-  day: String,
-  food: String,
-  nap: Number,
-  activitie: String,
+  // day: String,
+  // food: String,
+  // nap: Number,
+  activities: [{
+    type: String
+  }],
   message: String,
-      
-  child: [
-    {
-      type: Schema.Types.ObjectId,
-      ref:"Child"
-    }
-  ]
-  
 });
 
 const Report = mongoose.model("Report", reportSchema);
