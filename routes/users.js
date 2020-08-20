@@ -2,27 +2,18 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+// const db = require("../routes");
+
 // Load User model
 const User = require('../models/User');
-const { forwardAuthenticated } = require('../config/auth');
-
-// Login Page
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
-
-// Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
 // Register
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { name, email, password } = req.body;
   let errors = [];
 
-  if (!name || !email || !password || !password2) {
+  if (!name || !email || !password) {
     errors.push({ msg: 'Please enter all fields' });
-  }
-
-  if (password != password2) {
-    errors.push({ msg: 'Passwords do not match' });
   }
 
   if (password.length < 6) {
@@ -30,24 +21,24 @@ router.post('/register', (req, res) => {
   }
 
   if (errors.length > 0) {
-    res.render('register', {
-      errors,
-      name,
-      email,
-      password,
-      password2
-    });
+    // res.render('register', {
+    //   errors,
+    //   name,
+    //   email,
+    //   password,
+
+    // });
   } else {
     User.findOne({ email: email }).then(user => {
       if (user) {
         errors.push({ msg: 'Email already exists' });
-        res.render('register', {
-          errors,
-          name,
-          email,
-          password,
-          password2
-        });
+        // res.render('register', {
+        //   errors,
+        //   name,
+        //   email,
+        //   password,
+        //   password2
+        // });
       } else {
         const newUser = new User({
           name,
@@ -66,7 +57,7 @@ router.post('/register', (req, res) => {
                   'success_msg',
                   'Account creation successful'
                 );
-                res.redirect('/users/login');
+                res.json(user)
               })
               .catch(err => console.log(err));
           });
@@ -77,12 +68,8 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
-    failureFlash: true
-  })(req, res, next);
+router.post('/login', passport.authenticate('local'), (req, res, next) => {
+  res.json(req.user)
 });
 
 // Logout
