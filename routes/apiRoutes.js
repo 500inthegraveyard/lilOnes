@@ -44,7 +44,7 @@ router.post("/child/:id", ({ body,params }, res) => {
     });
 });
 
-// FIXME: Dynamically pass in a child id as a a parameter
+// Dynamically pass in a child id as a a parameter
 router.delete("/child/:id", ({ body , params }, res) => {
   db.Child.findOneAndDelete(params.id , { $push: { children: _id } }, { new: true }) 
   .then(dbchild);
@@ -59,11 +59,11 @@ router.delete("/child/:id", ({ body , params }, res) => {
     });
 
 
-// FIXME: Pass in the report ID to pull one report
-router.get("/report", (req, res) => {
+// Pass in the report ID to pull one report
+router.get("/report/:id", ({ body, params }, res) => {
   db.Report.find({})
-    .then(dbReport => {
-      res.json(dbReport);
+    .then(dbreport => {
+      res.json(dbreport);
     })
     .catch(err => {
       res.json(err);
@@ -80,19 +80,18 @@ router.post("/report", ({ body }, res) => {
     });
 });
 
-// FIXME: Delete route for a report
-// router.delete("/report", ({ body }, res) => {
-//   db.Report.findOneAndDelete({ Food: 'Chicken' }, function (err) {
-//     if (err) console.log(err);
-//   })
+// Delete route for a report
+router.delete("/report/:id", ({ body, params }, res) => {
+  db.Report.findOneAndDelete(params.id , { $push: { report: _id }  }, { new: true })
+    .then(dbreport);
+  })
 
-//     .then(dbReport => {
-//       res.json(dbReport);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+    .catch(err => { console.log(err)
+      res.json(err);
+    })
+    .catch(err => {
+      res.json(err);
+    });
 
 
 
