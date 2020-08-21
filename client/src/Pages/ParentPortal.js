@@ -9,8 +9,28 @@ import {
   CardBody,
 } from "reactstrap";
 
-const ParentPortal = (props) => {
+export default class ParentPortal extends Component {
+
+  state = {
+    data: {},
+    error:""
+  }
+  
+  componentDidMount() {
+    axios.get(`/users/login`)
+      .then(res => {
+        this.setState({data:res.data});
+      })
+      .catch(error=>{
+        this.setState({error})
+      })
+  }
+
+  render() {
   return (
+    <>
+    {this.state.error !== "" && <h1>WOAH YOU SHOULD NOT BE HERE. CLICK <a href="/">HERE</a> TO GO BACK TO WHERE YOU SHOULD BE?</h1> }
+    {this.state.data !== {} && 
     <CardDeck>
       <Card>
         <CardImg
@@ -26,7 +46,10 @@ const ParentPortal = (props) => {
         </CardBody>
       </Card>
     </CardDeck>
+    }
+    </>
   );
 };
+}
 
 export default ParentPortal;
