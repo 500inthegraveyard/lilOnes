@@ -57,9 +57,6 @@ const ModalExample = (props) => {
           {/* <Button color="primary" onClick={toggle}>
             Do Something
           </Button>{" "} */}
-          <Button color="secondary" onClick={toggle}>
-            LogIn
-          </Button>
         </ModalFooter>
       </Modal>
     </div>
