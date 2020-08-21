@@ -9,7 +9,7 @@ const ChildSchema = Schema({
   reports: [
     {
       type: Schema.Types.ObjectId,
-      ref:"Reports"
+      ref: "Report"
     }
   ]
 });
