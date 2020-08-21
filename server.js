@@ -4,7 +4,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const app = express();
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 3001;
 const db = require('./config/keys').mongoURI;
 const apiRoutes = require('./routes/apiRoutes')
 // Passport Config
