@@ -1,29 +1,23 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
-import Activities from "../Modal/Activities";
+import { Form,ListGroup, ListGroupItem } from "react-bootstrap";
+
 
 const StuCard = (props) => {
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src="https://via.placeholder.com/150" />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
+        <Card.Title className="text-center">{"Kids Name"}</Card.Title>
       </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroupItem>Cras justo odio</ListGroupItem>
-        <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-        <ListGroupItem>Vestibulum at eros</ListGroupItem>
+      <ListGroup className="list-group-flush, text-center">
+        <ListGroupItem>{"First Name"}</ListGroupItem>
+        <ListGroupItem>{"Last Name"}</ListGroupItem>
+        <ListGroupItem>{"Parent 1"}</ListGroupItem>
+        <ListGroupItem>{"Parent 2"}</ListGroupItem>
       </ListGroup>
-      <Card.Body>
-        <Activities></Activities>
-        {/* <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link> */}
-      </Card.Body>
+      <Card.Body className="text-center">{"NOTES ON KIDS"}</Card.Body>
+     
     </Card>
   );
 };

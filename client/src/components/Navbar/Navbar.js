@@ -3,9 +3,10 @@ import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 // import LoginForm from "../LogIn/Login.js";
 // import Signup from "../LogIn/Signup.js";
-import ModalExample from "../Modal/Test.js";
+import SignIn from "../Modal/SignIn";
 
 import { Link } from "react-router-dom";
+import CreateChild from "../Modal/CreateChild";
 
 // import Modaal from "../Modal/Modal";
 
@@ -27,7 +28,12 @@ const Navibar = () => {
             ContactUs
           </Nav.Link>
         </Nav>
-        <ModalExample></ModalExample>
+        {/* TODO:On teacher portal hide all buttons and show create child
+            if parent go to parent portal  */}
+
+        <SignIn>}</SignIn>
+        <span>{""}</span>
+        <CreateChild></CreateChild>
       </Navbar>
     </>
   );

@@ -5,7 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Signup from "../LogIn/Signup.js";
 import LoginForm from "../LogIn/Login.js";
 
-const ModalExample = (props) => {
+const SignIn = (props) => {
   const { className } = props;
 
   const [modal, setModal] = useState(false);
@@ -66,4 +66,4 @@ const ModalExample = (props) => {
   );
 };
 
-export default ModalExample;
+export default SignIn;

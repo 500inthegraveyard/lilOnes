@@ -16,7 +16,7 @@ const TaskList = (props) => {
             className="form-control "
           />
         </td>
-        <td>
+        {/* <td>
           <input
             type="text"
             name="task"
@@ -24,7 +24,7 @@ const TaskList = (props) => {
             data-id={idx}
             className="form-control "
           />
-        </td>
+        </td> */}
         <td>
           <textarea
             name="taskNotes"
@@ -33,7 +33,7 @@ const TaskList = (props) => {
             className="form-control"
           ></textarea>
         </td>
-        <td>
+        {/* <td>
           <select
             name="taskStatus"
             id={taskStatus}
@@ -45,7 +45,7 @@ const TaskList = (props) => {
             <option value="Completed">Completed</option>
             <option value="Hold">Hold</option>
           </select>
-        </td>
+        </td> */}
         <td>
           {idx === 0 ? (
             <button
