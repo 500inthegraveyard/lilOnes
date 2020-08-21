@@ -50,7 +50,7 @@ function SignUp() {
         <Form noValidate onSubmit={handleSubmit}>
           {/* <Form.Row> */}
           {/* <Form.Group as={Col} md="4" controlId="validationFormik01"> */}
-          <Form.Label>First name</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             name="firstName"
@@ -62,14 +62,14 @@ function SignUp() {
           {/* </Form.Group> */}
 
           {/* <Form.Group as={Col} md="4" controlId="validationFormik02"> */}
-          <Form.Label>Last name</Form.Label>
+          {/* <Form.Label>Last name</Form.Label>
           <Form.Control
             type="text"
             name="lastName"
             value={values.lastName}
             onChange={handleChange}
             isValid={touched.lastName && !errors.lastName}
-          />
+          /> */}
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           {/* </Form.Group> */}
 
@@ -96,7 +96,7 @@ function SignUp() {
           {/* </Form.Row> */}
           {/* <Form.Row> */}
           {/* <Form.Group as={Col} md="6" controlId="validationFormik03"> */}
-          <Form.Label>UserName</Form.Label>
+          {/* <Form.Label>UserName</Form.Label>
           <Form.Control
             type="text"
             placeholder="UserName"
@@ -104,7 +104,7 @@ function SignUp() {
             value={values.username}
             onChange={handleChange}
             // isInvalid={!!errors.username}
-          />
+          /> */}
 
           <Form.Control.Feedback type="invalid">
             {errors.username}

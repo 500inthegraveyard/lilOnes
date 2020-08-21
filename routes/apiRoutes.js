@@ -45,18 +45,19 @@ router.post("/child/:id", ({ body,params }, res) => {
 });
 
 // FIXME: Dynamically pass in a child id as a a parameter
-router.delete("/child", ({ body }, res) => {
-  db.Child.findOneAndDelete({ name: 'Timmy' }, function (err) {
-    if (err) console.log(err);
+router.delete("/child/:id", ({ body , params }, res) => {
+  db.Child.findOneAndDelete(params.id , { $push: { children: _id } }, { new: true }) 
+  .then(dbchild);
+    
   })
 
-    .then(dbchild => {
-      res.json(dbchild);
+    .catch(err => { console.log(err)
+      res.json(err);
     })
     .catch(err => {
       res.json(err);
     });
-});
+
 
 // FIXME: Pass in the report ID to pull one report
 router.get("/report", (req, res) => {
