@@ -17,9 +17,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Route exact path="/" component={Home} />
-        <Route exact path="/-t" component={TeacherPortal} />
-        <Route exact path="/-p" component={ParentPortal} />
-        <Route exact path="/-a" component={Activities} />
+        <Route exact path="/teacherPortal" component={TeacherPortal} />
+        <Route exact path="/parentPortal" component={ParentPortal} />
+        <Route exact path="/activities" component={Activities} />
       </BrowserRouter>
     </div>
   );
