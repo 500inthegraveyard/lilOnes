@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 const Navibar = () => {
   return (
     <>
-      <Navbar bg="light" variant="light">
+      <Navbar sideClass="navTransparent" bg="light" variant="light">
         <Navbar.Brand href="#home">LilOnes</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/">
@@ -30,7 +30,7 @@ const Navibar = () => {
             Parent Portal
           </Nav.Link>
           <Nav.Link as={Link} to="/activites">
-            Activites 
+            Activites
           </Nav.Link>
           <Nav.Link as={Link} to="/teacherPortal">
             Teacher Portal
@@ -42,6 +42,9 @@ const Navibar = () => {
   );
 };
 
+{
+
+}
 // Modal Component
 // Login Form
 
