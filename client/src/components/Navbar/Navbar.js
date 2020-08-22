@@ -15,7 +15,7 @@ import CreateChild from "../Modal/CreateChild";
 const Navibar = () => {
   return (
     <>
-      <Navbar bg="light" variant="light">
+      <Navbar sideClass="navTransparent" bg="light" variant="light">
         <Navbar.Brand href="#home">LilOnes</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/">
@@ -26,6 +26,15 @@ const Navibar = () => {
           </Nav.Link>
           <Nav.Link as={Link} to="#">
             ContactUs
+          </Nav.Link>
+          <Nav.Link as={Link} to="/parentPortal">
+            Parent Portal
+          </Nav.Link>
+          <Nav.Link as={Link} to="/activites">
+            Activites
+          </Nav.Link>
+          <Nav.Link as={Link} to="/teacherPortal">
+            Teacher Portal
           </Nav.Link>
         </Nav>
         {/* TODO:On teacher portal hide all buttons and show create child
@@ -39,6 +48,9 @@ const Navibar = () => {
   );
 };
 
+{
+
+}
 // Modal Component
 // Login Form
 

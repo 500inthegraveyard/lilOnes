@@ -3,18 +3,9 @@ import { Form, Button} from "react-bootstrap";
 // import { Formik } from "formik";
 import * as yup from "yup";
 import { Formik } from "formik";
+import axios from "axios";
 
-// const { Formik } = formik;
 
-// const schema = yup.object({
-//   firstName: yup.string().required(),
-//   lastName: yup.string().required(),
-//   email: yup.string().required(),
-//   userName: yup.string().required(),
-//   password: yup.string().required(),
-//   // zip: yup.string().required(),
-//   // terms: yup.bool().required(),
-// });
 const validationSchema = yup.object().shape({
   username: yup.string().required("Required"),
   firstName: yup.string().required("Required"),
@@ -29,6 +20,26 @@ const validationSchema = yup.object().shape({
 });
 
 function SignUp() {
+
+  let userLogin = event => {
+    event.preventDefault();
+
+    userLogin = {
+      email:"",
+      password:"",
+      name:"",
+      isTeacher:""
+    };
+
+    axios.post(`http://localhost:3001/users/register`, { userLogin })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+  }
+
+
+
   return (
     <Formik
       validationSchema={validationSchema}
