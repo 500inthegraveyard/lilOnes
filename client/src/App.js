@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar/Navbar";
 import "./components/Images/Background.css";
 import { BrowserRouter, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import TeacherPortal from "./Pages/TeacherPortal";
-import ParentPortal from "./Pages/ParentPortal";
-import Activities from "./Pages/Activities";
-import Axios from "axios";
+import Home from "./pages/Home";
+import TeacherPortal from "./pages/TeacherPortal";
+import ParentPortal from "./pages/ParentPortal";
+import Activities from "./pages/Activities";
+
 
 
 function App() {

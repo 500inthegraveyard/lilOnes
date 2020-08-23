@@ -8,7 +8,7 @@ import axios from "axios";
 
 const validationSchema = yup.object().shape({
   username: yup.string().required("Required"),
-  firstName: yup.string().required("Required"),
+  name: yup.string().required("Required"),
   lastName: yup.string().required("Required"),
   email: yup.string().email("Invalid email").required("Required"),
   contactNumber: yup.number().required("Required"),
@@ -61,28 +61,18 @@ function SignUp() {
         <Form noValidate onSubmit={handleSubmit}>
           {/* <Form.Row> */}
           {/* <Form.Group as={Col} md="4" controlId="validationFormik01"> */}
-          <Form.Label>First name</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
-            name="firstName"
-            value={values.firstName}
+            name="name"
+            value={values.name}
             onChange={handleChange}
-            isValid={touched.firstName && !errors.firstName}
+            isValid={touched.name && !errors.name}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           {/* </Form.Group> */}
 
-          {/* <Form.Group as={Col} md="4" controlId="validationFormik02"> */}
-          <Form.Label>Last name</Form.Label>
-          <Form.Control
-            type="text"
-            name="lastName"
-            value={values.lastName}
-            onChange={handleChange}
-            isValid={touched.lastName && !errors.lastName}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          {/* </Form.Group> */}
+          
 
           {/* <Form.Group as={Col} md="4" controlId="validationFormikUsername"> */}
           <Form.Label>Email</Form.Label>

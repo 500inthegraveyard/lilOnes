@@ -8,14 +8,14 @@ const LoginForm = ({ onSubmit }) => {
   const [password, setPassword] = useState("");
 
 
-  let userLogin = event => {
+  let handleSubmit = event => {
     event.preventDefault();
 
     const userDeets = {
       email,
       password
     };
-
+    
     axios.post(`/users/login`,  userDeets )
       .then(res => {
         console.log(res);
