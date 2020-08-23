@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import { Form, Col, InputGroup } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 import axios from "axios";
 
 const ModalExample = (props) => {
@@ -9,8 +9,8 @@ const ModalExample = (props) => {
   const [modal, setModal] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [parentOne, setParentOne] = useState("");
-  const [parentTwo, setParentTwo] = useState("");
+  const [parent1, setParent1] = useState("");
+  const [parent2, setParent2] = useState("");
   const [notes, setNotes] = useState("");
 
   const toggle = () => setModal(!modal);
@@ -19,8 +19,8 @@ const ModalExample = (props) => {
     axios.post("/api/child/01", {
       firstName,
       lastName,
-      parentOne,
-      parentTwo,
+      parent1,
+      parent2,
       notes,
     });
   };
@@ -59,11 +59,10 @@ const ModalExample = (props) => {
             </Form.Row>
 
             <Form.Group controlId="exampleForm.ControlTextarea1">
-              
               <Form.Label>Parent 1</Form.Label>
               <Form.Control
                 onChange={(e) => {
-                  setParentOne(e.target.value);
+                  setParent1(e.target.value);
                 }}
                 as="textarea"
                 rows="3"
@@ -74,7 +73,7 @@ const ModalExample = (props) => {
               <Form.Label>Parent 2</Form.Label>
               <Form.Control
                 onChange={(e) => {
-                  setParentTwo(e.target.value);
+                  setParent2(e.target.value);
                 }}
                 as="textarea"
                 rows="3"

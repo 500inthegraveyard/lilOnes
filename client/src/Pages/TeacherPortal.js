@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import StuCard from "../components/Card/Card";
 import axios from "axios";
 
-const TeacherPortal = (props) => {
+const TeacherPortal = () => {
   const [students, setStudents] = useState([]);
   useEffect(() => {
     axios.get("/api/child").then((response) => {
@@ -11,14 +11,14 @@ const TeacherPortal = (props) => {
     });
   }, []);
   return (
-    <div>
+    <div className="container-fluid d-flex justify-content-center pr-3">
       {students.map((student) => {
         return (
           <StuCard
             firstName={student.firstName}
             lastName={student.lastName}
-            parentOne={student.parent1}
-            parentTwo={student.parent2}
+            parent1={student.parent1}
+            parent2={student.parent2}
             notes={student.notes}
           />
         );

@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import { CardDeck, Button, input, InputGroup } from "react-bootstrap";
+import { Button, input, InputGroup } from "react-bootstrap";
 
 const StuCard = (props) => {
   return (
@@ -15,7 +15,7 @@ const StuCard = (props) => {
               Parent 1
             </InputGroup.Text>
           </InputGroup.Prepend>
-          {props.parentOne}
+          {props.parent1}
         </Card.Header>
         <Card.Header text-align="center">
           <InputGroup.Prepend>
@@ -23,7 +23,7 @@ const StuCard = (props) => {
               Parent 2
             </InputGroup.Text>
           </InputGroup.Prepend>
-          {props.parentTwo}
+          {props.parent2}
         </Card.Header>
         <Card.Header>
           <InputGroup.Prepend>
@@ -32,9 +32,8 @@ const StuCard = (props) => {
           {props.notes}
         </Card.Header>
       </Card.Body>
-
       <Card.Footer>
-        <Button as={Link} to="/activities">
+        <Button as={Link} to="/Activities">
           Activities
         </Button>
       </Card.Footer>
