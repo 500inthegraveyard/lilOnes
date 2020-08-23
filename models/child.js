@@ -3,15 +3,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ChildSchema = Schema({
- 
   firstName: String,
   lastName: String,
+  parent1: String,
+  parent2: String,
+  notes: String,
   reports: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Report"
-    }
-  ]
+      ref: "Report",
+    },
+  ],
 });
 
 const Child = mongoose.model("Child", ChildSchema);

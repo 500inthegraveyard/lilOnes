@@ -1,13 +1,29 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import { Form, Col } from "react-bootstrap";
+import axios from "axios";
 
 const ModalExample = (props) => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [parent1, setParent1] = useState("");
+  const [parent2, setParent2] = useState("");
+  const [notes, setNotes] = useState("");
 
   const toggle = () => setModal(!modal);
+
+  let handleSubmit = () => {
+    axios.post("/api/child/01", {
+      firstName,
+      lastName,
+      parent1,
+      parent2,
+      notes,
+    });
+  };
 
   return (
     <div>
@@ -21,31 +37,59 @@ const ModalExample = (props) => {
             <Form.Row>
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type="First-Name" placeholder="First Name" />
+                <Form.Control
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }}
+                  type="First-Name"
+                  placeholder="First Name"
+                />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridPassword">
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control type="Last-Name" placeholder="Last Name" />
+                <Form.Control
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                  }}
+                  type="Last-Name"
+                  placeholder="Last Name"
+                />
               </Form.Group>
             </Form.Row>
 
             <Form.Group controlId="formGridAddress1">
               <Form.Label>Parent 1</Form.Label>
-              <Form.Control placeholder="Parent-1" />
+              <Form.Control
+                onChange={(e) => {
+                  setParent1(e.target.value);
+                }}
+                placeholder="Parent-1"
+              />
             </Form.Group>
 
             <Form.Group controlId="formGridAddress2">
               <Form.Label>Parent 2</Form.Label>
-              <Form.Control placeholder="Parent-2" />
+              <Form.Control
+                onChange={(e) => {
+                  setParent2(e.target.value);
+                }}
+                placeholder="Parent-2"
+              />
             </Form.Group>
 
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Notes</Form.Label>
-              <Form.Control as="textarea" rows="3" />
+              <Form.Control
+                onChange={(e) => {
+                  setNotes(e.target.value);
+                }}
+                as="textarea"
+                rows="3"
+              />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button onClick={handleSubmit} variant="primary" type="submit">
               Submit
             </Button>
           </Form>

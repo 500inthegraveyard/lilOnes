@@ -9,7 +9,7 @@ import TeacherPortal from "./Pages/TeacherPortal";
 import ParentPortal from "./Pages/ParentPortal";
 import Activities from "./Pages/Activities";
 import Axios from "axios";
-
+import CreateChildContext from "./context/CreateChildContext";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/teacherPortal" component={TeacherPortal} />
         <Route exact path="/parentPortal" component={ParentPortal} />
-        <Route exact path="/activities" component={Activities} />
+        {/* <Route exact path="/activities" component={Activities} /> */}
       </BrowserRouter>
     </div>
   );

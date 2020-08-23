@@ -30,9 +30,9 @@ const Navibar = () => {
           <Nav.Link as={Link} to="/parentPortal">
             Parent Portal
           </Nav.Link>
-          <Nav.Link as={Link} to="/activites">
+          {/* <Nav.Link as={Link} to="/activites">
             Activites
-          </Nav.Link>
+          </Nav.Link> */}
           <Nav.Link as={Link} to="/teacherPortal">
             Teacher Portal
           </Nav.Link>
