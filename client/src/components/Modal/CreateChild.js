@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import { Form, Col } from "react-bootstrap";
+import { Form, Col, InputGroup } from "react-bootstrap";
 import axios from "axios";
 
 const ModalExample = (props) => {
@@ -9,8 +9,8 @@ const ModalExample = (props) => {
   const [modal, setModal] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [parent1, setParent1] = useState("");
-  const [parent2, setParent2] = useState("");
+  const [parentOne, setParentOne] = useState("");
+  const [parentTwo, setParentTwo] = useState("");
   const [notes, setNotes] = useState("");
 
   const toggle = () => setModal(!modal);
@@ -19,8 +19,8 @@ const ModalExample = (props) => {
     axios.post("/api/child/01", {
       firstName,
       lastName,
-      parent1,
-      parent2,
+      parentOne,
+      parentTwo,
       notes,
     });
   };
@@ -58,23 +58,26 @@ const ModalExample = (props) => {
               </Form.Group>
             </Form.Row>
 
-            <Form.Group controlId="formGridAddress1">
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              
               <Form.Label>Parent 1</Form.Label>
               <Form.Control
                 onChange={(e) => {
-                  setParent1(e.target.value);
+                  setParentOne(e.target.value);
                 }}
-                placeholder="Parent-1"
+                as="textarea"
+                rows="3"
               />
             </Form.Group>
 
-            <Form.Group controlId="formGridAddress2">
+            <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Parent 2</Form.Label>
               <Form.Control
                 onChange={(e) => {
-                  setParent2(e.target.value);
+                  setParentTwo(e.target.value);
                 }}
-                placeholder="Parent-2"
+                as="textarea"
+                rows="3"
               />
             </Form.Group>
 
@@ -84,8 +87,6 @@ const ModalExample = (props) => {
                 onChange={(e) => {
                   setNotes(e.target.value);
                 }}
-                as="textarea"
-                rows="3"
               />
             </Form.Group>
 
