@@ -45,8 +45,8 @@ function SignUp() {
       validationSchema={validationSchema}
       onSubmit={console.log}
       initialValues={{
-        firstName: "Mark",
-        lastName: "Otto",
+        firstName: "",
+        lastName: "",
       }}
     >
       {({
@@ -162,7 +162,7 @@ function SignUp() {
               id="validationFormik0"
           />*/}
           {/* </Form.Group> */}
-          <Button type="submit">Submit form</Button>
+          <Button className="top-1" type="submit">Submit form</Button>
         </Form>
       )}
     </Formik>

@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { Button, input, InputGroup } from "react-bootstrap";
+import Activities from "../Modal/Activities";
 
 const StuCard = (props) => {
   return (
@@ -33,9 +34,7 @@ const StuCard = (props) => {
         </Card.Header>
       </Card.Body>
       <Card.Footer>
-        <Button as={Link} to="/Activities">
-          Activities
-        </Button>
+        <Activities></Activities>
       </Card.Footer>
     </Card>
   );

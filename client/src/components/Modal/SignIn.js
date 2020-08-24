@@ -40,14 +40,6 @@ const SignIn = (props) => {
             <ModalBody>
               <Signup></Signup>
             </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={toggleNested}>
-                Done
-              </Button>{" "}
-              <Button color="secondary" onClick={toggleAll}>
-                All Done
-              </Button>
-            </ModalFooter>
           </Modal>
         </ModalBody>
         <ModalFooter>
@@ -57,9 +49,6 @@ const SignIn = (props) => {
           {/* <Button color="primary" onClick={toggle}>
             Do Something
           </Button>{" "} */}
-          <Button color="secondary" onClick={toggle}>
-            LogIn
-          </Button>
         </ModalFooter>
       </Modal>
     </div>

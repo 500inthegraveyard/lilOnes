@@ -1,6 +1,7 @@
 import React from "react";
 import TaskList from "./TaskList";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {
 //   NotificationContainer,
 //   NotificationManager,
@@ -56,9 +57,9 @@ class Form extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.date === "" || this.state.description === "") {
-    //   NotificationManager.warning(
-    //     "Please Fill up Required Field . Please check Task and Date Field"
-    //   );
+      //   NotificationManager.warning(
+      //     "Please Fill up Required Field . Please check Task and Date Field"
+      //   );
       return false;
     }
     for (var i = 0; i < this.state.taskList.length; i++) {
@@ -83,9 +84,9 @@ class Form extends React.Component {
       })
       .catch((error) => {
         if (error.response.status && error.response.status === 400)
-        //   NotificationManager.error("Bad Request");
-        // else NotificationManager.error("Something Went Wrong");
-        this.setState({ errors: error });
+          //   NotificationManager.error("Bad Request");
+          // else NotificationManager.error("Something Went Wrong");
+          this.setState({ errors: error });
       });
   };
   clickOnDelete(record) {
@@ -108,36 +109,23 @@ class Form extends React.Component {
                 </div>
                 <div className="card-body">
                   <div className="row">
-                    <div className="col-sm-4">
-                      <div className="form-group ">
-                        <label className="required">Date</label>
-                        <input
-                          type="date"
-                          name="date"
-                          id="date"
-                          className="form-control"
-                          placeholder="Enter Date"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-sm-4">
-                      <div className="form-group ">
-                        <label className="required">Description</label>
-                        <textarea
-                          name="description"
-                          id="description"
-                          className="form-control"
-                        ></textarea>
-                      </div>
+                    <div className="form-group ">
+                      <label className="required">Date</label>
+                      <input
+                        type="date"
+                        name="date"
+                        id="date"
+                        className="form-control"
+                        placeholder="Enter Date"
+                      />
                     </div>
                   </div>
+
                   <table className="table">
                     <thead>
                       <tr>
-                        <th className="required">Project Name</th>
-                        <th className="required">Task</th>
-                        <th>Notes</th>
-                        <th>Status</th>
+                        <th className="required">Activities</th>
+                        <th className="required">Notes</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -148,7 +136,7 @@ class Form extends React.Component {
                       />
                     </tbody>
                     <tfoot>
-                      <tr>
+                      {/* <tr>
                         <td colSpan="4">
                           <button
                             onClick={this.addNewRow}
@@ -161,12 +149,11 @@ class Form extends React.Component {
                             ></i>
                           </button>
                         </td>
-                      </tr>
+                      </tr> */}
                     </tfoot>
                   </table>
                 </div>
                 <div className="card-footer text-center">
-                  {" "}
                   <button type="submit" className="btn btn-primary text-center">
                     Submit
                   </button>

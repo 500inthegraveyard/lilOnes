@@ -21,10 +21,10 @@ function Activities() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Activities</Modal.Title>
+          <Modal.Title></Modal.Title>
           <Form />
         </Modal.Header>
-        <Modal.Body>
+        {/* <Modal.Body>
           I will not close if you click outside me. Don't even try to press
           escape key.
         </Modal.Body>
@@ -33,7 +33,7 @@ function Activities() {
             Close
           </Button>
           <Button variant="primary">Save</Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   );
