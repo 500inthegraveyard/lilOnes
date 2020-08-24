@@ -79,4 +79,18 @@ router.get('/logout', (req, res) => {
   req.flash('success_msg', 'You are logged out');
 });
 
+router.get("/user_data", (req, res) => {
+  if (!req.user) {
+    // The user is not logged in, send back an empty object
+    res.json(false);
+  } else {
+    // Otherwise send back the user's email and id
+    // Sending back a password, even a hashed password, isn't a good idea
+    res.json({
+      email: req.user.email,
+      id: req.user._id
+    });
+  }
+});
+
 module.exports = router;

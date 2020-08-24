@@ -3,21 +3,12 @@ import { Form, Button} from "react-bootstrap";
 // import { Formik } from "formik";
 import * as yup from "yup";
 import { Formik } from "formik";
+import axios from "axios";
 
-// const { Formik } = formik;
 
-// const schema = yup.object({
-//   firstName: yup.string().required(),
-//   lastName: yup.string().required(),
-//   email: yup.string().required(),
-//   userName: yup.string().required(),
-//   password: yup.string().required(),
-//   // zip: yup.string().required(),
-//   // terms: yup.bool().required(),
-// });
 const validationSchema = yup.object().shape({
   username: yup.string().required("Required"),
-  firstName: yup.string().required("Required"),
+  name: yup.string().required("Required"),
   lastName: yup.string().required("Required"),
   email: yup.string().email("Invalid email").required("Required"),
   contactNumber: yup.number().required("Required"),
@@ -29,6 +20,26 @@ const validationSchema = yup.object().shape({
 });
 
 function SignUp() {
+
+  let userLogin = event => {
+    event.preventDefault();
+
+    userLogin = {
+      email:"",
+      password:"",
+      name:"",
+      isTeacher:""
+    };
+
+    axios.post(`http://localhost:3001/users/register`, { userLogin })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+  }
+
+
+
   return (
     <Formik
       validationSchema={validationSchema}
@@ -53,25 +64,15 @@ function SignUp() {
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
-            name="firstName"
-            value={values.firstName}
+            name="name"
+            value={values.name}
             onChange={handleChange}
-            isValid={touched.firstName && !errors.firstName}
+            isValid={touched.name && !errors.name}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           {/* </Form.Group> */}
 
-          {/* <Form.Group as={Col} md="4" controlId="validationFormik02"> */}
-          {/* <Form.Label>Last name</Form.Label>
-          <Form.Control
-            type="text"
-            name="lastName"
-            value={values.lastName}
-            onChange={handleChange}
-            isValid={touched.lastName && !errors.lastName}
-          /> */}
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          {/* </Form.Group> */}
+          
 
           {/* <Form.Group as={Col} md="4" controlId="validationFormikUsername"> */}
           <Form.Label>Email</Form.Label>
@@ -96,7 +97,7 @@ function SignUp() {
           {/* </Form.Row> */}
           {/* <Form.Row> */}
           {/* <Form.Group as={Col} md="6" controlId="validationFormik03"> */}
-          {/* <Form.Label>UserName</Form.Label>
+          <Form.Label>UserName</Form.Label>
           <Form.Control
             type="text"
             placeholder="UserName"
@@ -104,7 +105,7 @@ function SignUp() {
             value={values.username}
             onChange={handleChange}
             // isInvalid={!!errors.username}
-          /> */}
+          />
 
           <Form.Control.Feedback type="invalid">
             {errors.username}
