@@ -3,7 +3,7 @@ import {Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, setUserState }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,6 +20,8 @@ const LoginForm = ({ onSubmit }) => {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        res.data&&setUserState({ loggedIn: true, user: res.data })
+        
       })
   }
 

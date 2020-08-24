@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 // make a new component
 
-const Navibar = () => {
+const Navibar = (props) => {
   return (
     <>
       <Navbar bg="light" variant="light">
@@ -36,7 +36,9 @@ const Navibar = () => {
             Teacher Portal
           </Nav.Link>
         </Nav>
-        <ModalExample></ModalExample>
+        <ModalExample
+        setUserState={props.setUserState}
+        ></ModalExample>
       </Navbar>
     </>
   );
