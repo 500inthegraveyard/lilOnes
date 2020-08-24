@@ -1,10 +1,9 @@
-import React from "react";
-import { Form, Button} from "react-bootstrap";
+import React, {useState} from "react";
+import { Form, Button } from "react-bootstrap";
 // import { Formik } from "formik";
 import * as yup from "yup";
 import { Formik } from "formik";
 import axios from "axios";
-
 
 const validationSchema = yup.object().shape({
   username: yup.string().required("Required"),
@@ -20,25 +19,27 @@ const validationSchema = yup.object().shape({
 });
 
 function SignUp() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
-  let userLogin = event => {
+  let userLogin = (event) => {
     event.preventDefault();
 
-    userLogin = {
-      email:"",
-      password:"",
-      name:"",
-      isTeacher:""
+    let userLogin = {
+      firstName,
+      lastName,
+      email,
+      password,
+      isTeacher: true
     };
-
-    axios.post(`http://localhost:3001/users/register`, { userLogin })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-  }
-
-
+    console.log("USER OBJECT: ", userLogin)
+    axios.post(`/users/register`, { userLogin }).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+  };
 
   return (
     <Formik
@@ -51,22 +52,22 @@ function SignUp() {
     >
       {({
         handleSubmit,
-        handleChange,
+        // handleChange,
         handleBlur,
         values,
         touched,
         isValid,
         errors,
       }) => (
-        <Form noValidate onSubmit={handleSubmit}>
+        <Form noValidate onSubmit={userLogin}>
           {/* <Form.Row> */}
           {/* <Form.Group as={Col} md="4" controlId="validationFormik01"> */}
           <Form.Label>First name</Form.Label>
           <Form.Control
             type="text"
             name="firstName"
-            value={values.firstName}
-            onChange={handleChange}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             isValid={touched.firstName && !errors.firstName}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -77,92 +78,44 @@ function SignUp() {
           <Form.Control
             type="text"
             name="lastName"
-            value={values.lastName}
-            onChange={handleChange}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             isValid={touched.lastName && !errors.lastName}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          {/* </Form.Group> */}
 
-          {/* <Form.Group as={Col} md="4" controlId="validationFormikUsername"> */}
           <Form.Label>Email</Form.Label>
-          {/* <InputGroup>
-                <InputGroup.Prepend>
-                  <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                </InputGroup.Prepend> */}
+        
           <Form.Control
             type="text"
             placeholder="Email"
             aria-describedby="inputGroupPrepend"
             name="email"
-            value={values.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             isInvalid={!!errors.email}
           />
           <Form.Control.Feedback type="invalid">
             {errors.email}
           </Form.Control.Feedback>
-          {/* </InputGroup> */}
-          {/* </Form.Group> */}
-          {/* </Form.Row> */}
-          {/* <Form.Row> */}
-          {/* <Form.Group as={Col} md="6" controlId="validationFormik03"> */}
-          <Form.Label>UserName</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="UserName"
-            name="userName"
-            value={values.username}
-            onChange={handleChange}
-            // isInvalid={!!errors.username}
-          />
-
-          <Form.Control.Feedback type="invalid">
-            {errors.username}
-          </Form.Control.Feedback>
-          {/* </Form.Group>
-            <Form.Group as={Col} md="3" controlId="validationFormik04">
-              <Form.Label>State</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="State"
-                name="state"
-                value={values.state}
-                onChange={handleChange}
-                isInvalid={!!errors.state}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.state}
-              </Form.Control.Feedback> */}
-          {/* </Form.Group> */}
-          {/* <Form.Group as={Col} md="3" controlId="validationFormik05"> */}
+      
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="text"
             placeholder="Password"
             name="Password"
-            value={values.password}
-            onChange={handleChange}
-            isInvalid={!!errors.password}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            // isInvalid={!!errors.password}
           />
 
           <Form.Control.Feedback type="invalid">
             {errors.password}
           </Form.Control.Feedback>
-          {/* </Form.Group> */}
-          {/* </Form.Row> */}
-          {/* <Form.Group>
-            <Form.Check
-              required
-              name="terms"
-              label="Agree to terms and conditions"
-              onChange={handleChange}
-              isInvalid={!!errors.terms}
-              feedback={errors.terms}
-              id="validationFormik0"
-          />*/}
-          {/* </Form.Group> */}
-          <Button className="top-1" type="submit">Submit form</Button>
+   
+          <Button className="top-1" type="submit">
+            Submit form
+          </Button>
         </Form>
       )}
     </Formik>
