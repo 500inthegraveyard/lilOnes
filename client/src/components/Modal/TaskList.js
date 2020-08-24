@@ -1,9 +1,8 @@
 import React from "react";
 const TaskList = (props) => {
-  return props.taskList.map((val, idx) => {
+  return props.activities.map((val, idx) => {
     let projectName = `projectName-${idx}`,
       task = `task-${idx}`,
-      taskNotes = `taskNotes-${idx}`,
       taskStatus = `taskStatus-${idx}`;
     return (
       <tr key={val.index}>
@@ -14,9 +13,11 @@ const TaskList = (props) => {
             data-id={idx}
             id={projectName}
             className="form-control "
+            onChange={props.onChange}
           />
         </td>
-        <td>
+
+        {/* <td>
           <input
             type="text"
             name="task"
@@ -24,16 +25,8 @@ const TaskList = (props) => {
             data-id={idx}
             className="form-control "
           />
-        </td>
-        <td>
-          <textarea
-            name="taskNotes"
-            id={taskNotes}
-            data-id={idx}
-            className="form-control"
-          ></textarea>
-        </td>
-        <td>
+    
+        {/* <td>
           <select
             name="taskStatus"
             id={taskStatus}
@@ -45,24 +38,16 @@ const TaskList = (props) => {
             <option value="Completed">Completed</option>
             <option value="Hold">Hold</option>
           </select>
-        </td>
+        </td> */}
         <td>
-          {idx === 0 ? (
-            <button
+          {/* <button
               onClick={() => props.add()}
               type="button"
               className="btn btn-primary text-center"
             >
-              <i className="fa fa-plus-circle" aria-hidden="true"></i>
-            </button>
-          ) : (
-            <button
-              className="btn btn-danger"
-              onClick={() => props.delete(val)}
-            >
-              <i className="fa fa-minus" aria-hidden="true"></i>
-            </button>
-          )}
+              <FaPlus></FaPlus>
+              <i className="fa Faplus" aria-hidden="true"></i>
+            </button> */}
         </td>
       </tr>
     );

@@ -3,25 +3,23 @@ import {Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
-const LoginForm = ({ onSubmit, setUserState }) => {
+const LoginForm = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
 
-  let handleSubmit = event => {
+  let userLogin = event => {
     event.preventDefault();
 
     const userDeets = {
       email,
       password
     };
-    
+
     axios.post(`/users/login`,  userDeets )
       .then(res => {
         console.log(res);
         console.log(res.data);
-        res.data&&setUserState({ loggedIn: true, user: res.data })
-        
       })
   }
 

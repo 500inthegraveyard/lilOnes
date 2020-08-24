@@ -39,7 +39,7 @@ const LoginForm = ({ onSubmit }) => {
 };
 
 // Modal Rendering
-export default function Modal(props) {
+export default function Modaal() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -65,7 +65,7 @@ export default function Modal(props) {
           <Modal.Title>Login Form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <LoginForm setUserState={props.setUserState} onSubmit={onLoginFormSubmit} />
+          <LoginForm onSubmit={onLoginFormSubmit} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={""}>

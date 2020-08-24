@@ -7,10 +7,12 @@ const reportSchema = new mongoose.Schema({
   // day: String,
   // food: String,
   // nap: Number,
-  activities: [{
-    type: String
-  }],
-  message: String,
+  date: {
+    type: Date,
+    default: () => Date.now() + 7 * 24 * 60 * 60 * 1000,
+  },
+  activities: String,
+  note: String,
 });
 
 const Report = mongoose.model("Report", reportSchema);

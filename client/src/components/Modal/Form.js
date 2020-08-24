@@ -1,104 +1,90 @@
-import React from "react";
+import React, { useState } from "react";
 import TaskList from "./TaskList";
 import axios from "axios";
-// import {
-//   NotificationContainer,
-//   NotificationManager,
-// } from "react-notifications";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { FaPlus, FaMinus } from "react-icons/fa";
+
 class Form extends React.Component {
   state = {
-    taskList: [
-      {
-        index: Math.random(),
-        projectName: "",
-        task: "",
-        taskNotes: "",
-        taskStatus: "",
-      },
-    ],
+    currentActivity: "",
+    activities: [],
+    activityCount: [],
+    note: "",
     date: "",
-    description: "",
   };
 
   handleChange = (e) => {
-    if (
-      ["projectName", "task", "taskNotes", "taskStatus"].includes(e.target.name)
-    ) {
-      let taskList = [...this.state.taskList];
-      taskList[e.target.dataset.id][e.target.name] = e.target.value;
-    } else {
-      this.setState({ [e.target.name]: e.target.value });
-    }
-  };
-  addNewRow = (e) => {
-    this.setState((prevState) => ({
-      taskList: [
-        ...prevState.taskList,
-        {
-          index: Math.random(),
-          projectName: "",
-          task: "",
-          taskNotes: "",
-          taskStatus: "",
-        },
-      ],
-    }));
+    // if (["activities", "notes"].includes(e.target.name)) {
+    //   let activities = [...this.state.activities];
+    //   activities[e.target.dataset.id][e.target.name] = e.target.value;
+    // } else {
+    this.setState({ currentActivity: e.target.value });
+    // }
   };
 
-  deteteRow = (index) => {
-    this.setState({
-      taskList: this.state.taskList.filter((s, sindex) => index !== sindex),
-    });
-    // const taskList1 = [...this.state.taskList];
-    // taskList1.splice(index, 1);
-    // this.setState({ taskList: taskList1 });
+  addNewRow = (e) => {
+    this.setState((prevState) => ({
+      activityCount: [...prevState.activityCount, 1],
+    }));
+    if (this.state.activityCount.length > 0) {
+      this.setState((prevState) => ({
+        activities: [...prevState.activities, this.state.currentActivity],
+        currentActivity: "",
+      }));
+    }
   };
+
+  // deteteRow = (index) => {
+  //   this.setState({
+  //     activities: this.state.activities.filter((s, sindex) => index !== sindex),
+  //   });
+  // };
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.date === "" || this.state.description === "") {
-    //   NotificationManager.warning(
-    //     "Please Fill up Required Field . Please check Task and Date Field"
-    //   );
-      return false;
-    }
-    for (var i = 0; i < this.state.taskList.length; i++) {
-      if (
-        this.state.taskList[i].projectName === "" ||
-        this.state.taskList[i].task === ""
-      ) {
-        // NotificationManager.warning(
-        //   "Please Fill up Required Field.Please Check Project name And Task Field"
-        // );
-        return false;
-      }
-    }
-    let data = { formData: this.state, userData: localStorage.getItem("user") };
-    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-      "token"
-    );
+
+    // if (this.state.date === "" || this.state.description === "") {
+    //   return false;
+    // }
+    // for (var i = 0; i < this.state.activities.length; i++) {
+    //   if (
+    //     this.state.activities[i].activities === "" ||
+    //     this.state.activities[i].notes === ""
+    //   ) {
+    //     return false;
+    //   }
+    // }
+    console.log("CHILD ID: ", this.props);
+
+    const { activities, note, currentActivity } = this.state;
+    const activityArray = activities;
+    activityArray.push(currentActivity);
+    console.log(activityArray.join(", "));
+
     axios
-      .post("http://localhost:3000/api/task", data)
+      .post(`/api/report/${this.props.id}`, {
+        activities: activityArray.join(", "),
+        note,
+      })
       .then((res) => {
-        // if (res.data.success) success(res.data.msg);
+        console.log("REPORT SUCCESSFUL");
+        console.log(res);
       })
       .catch((error) => {
         if (error.response.status && error.response.status === 400)
-        //   NotificationManager.error("Bad Request");
-        // else NotificationManager.error("Something Went Wrong");
-        this.setState({ errors: error });
+          this.setState({ errors: error });
       });
   };
   clickOnDelete(record) {
     this.setState({
-      taskList: this.state.taskList.filter((r) => r !== record),
+      activities: this.state.activities.filter((r) => r !== record),
     });
   }
+
   render() {
-    let { taskList } = this.state; //let { notes, date, description, taskList } = this.state
+    let { activityCount } = this.state; //let { notes, date, description, activities } = this.state
     return (
       <div className="content">
-        {/* <NotificationContainer /> */}
-        <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+        <form onSubmit={this.handleSubmit}>
           <div className="row" style={{ marginTop: 20 }}>
             <div className="col-sm-1"></div>
             <div className="col-sm-10">
@@ -107,67 +93,50 @@ class Form extends React.Component {
                   Add Your Daily Task
                 </div>
                 <div className="card-body">
-                  <div className="row">
-                    <div className="col-sm-4">
-                      <div className="form-group ">
-                        <label className="required">Date</label>
-                        <input
-                          type="date"
-                          name="date"
-                          id="date"
-                          className="form-control"
-                          placeholder="Enter Date"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-sm-4">
-                      <div className="form-group ">
-                        <label className="required">Description</label>
-                        <textarea
-                          name="description"
-                          id="description"
-                          className="form-control"
-                        ></textarea>
-                      </div>
-                    </div>
-                  </div>
                   <table className="table">
                     <thead>
                       <tr>
-                        <th className="required">Project Name</th>
-                        <th className="required">Task</th>
-                        <th>Notes</th>
-                        <th>Status</th>
+                        <th className="required">Activities</th>
+                        <th>
+                          <button
+                            onClick={() => this.addNewRow()}
+                            type="button"
+                            className="btn btn-primary text-center"
+                          >
+                            <FaPlus></FaPlus>
+                            <i className="fa Faplus" aria-hidden="true"></i>
+                          </button>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       <TaskList
                         add={this.addNewRow}
                         delete={this.clickOnDelete.bind(this)}
-                        taskList={taskList}
+                        activities={activityCount}
+                        onChange={this.handleChange}
+                      />
+                      <label>Overview: </label>
+                      <input
+                        type="text"
+                        name="note"
+                        // id={task}
+                        // data-id={idx}
+                        className="form-control"
+                        placeholder="Enter notes here"
+                        onChange={(e) =>
+                          this.setState({ note: e.target.value })
+                        }
                       />
                     </tbody>
-                    <tfoot>
-                      <tr>
-                        <td colSpan="4">
-                          <button
-                            onClick={this.addNewRow}
-                            type="button"
-                            className="btn btn-primary text-center"
-                          >
-                            <i
-                              className="fa fa-plus-circle"
-                              aria-hidden="true"
-                            ></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tfoot>
                   </table>
                 </div>
                 <div className="card-footer text-center">
-                  {" "}
-                  <button type="submit" className="btn btn-primary text-center">
+                  <button
+                    onClick={this.handleSubmit}
+                    variant="primary"
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </div>

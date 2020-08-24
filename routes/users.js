@@ -1,24 +1,30 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
+const bcrypt = require("bcryptjs");
+const passport = require("passport");
 // const db = require("../routes");
 
 // Load User model
-const User = require('../models/User');
+const User = require("../models/User");
 
 // Register
-router.post('/register', (req, res) => {
-  const { name, email, password, isTeacher } = req.body;
+router.post("/register", (req, res) => {
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    isTeacher,
+  } = req.body.userLogin;
   let errors = [];
 
-  if (!name || !email || !password) {
-    errors.push({ msg: 'Please enter all fields' });
-  }
+  // if (!name || !email || !password) {
+  //   errors.push({ msg: 'Please enter all fields' });
+  // }
 
-  if (password.length < 6) {
-    errors.push({ msg: 'Password must be at least 6 characters' });
-  }
+  // if (password.length < 6) {
+  //   errors.push({ msg: 'Password must be at least 6 characters' });
+  // }
 
   if (errors.length > 0) {
     // res.render('register', {
@@ -26,12 +32,11 @@ router.post('/register', (req, res) => {
     //   name,
     //   email,
     //   password,
-
     // });
   } else {
-    User.findOne({ email: email }).then(user => {
+    User.findOne({ email: email }).then((user) => {
       if (user) {
-        errors.push({ msg: 'Email already exists' });
+        errors.push({ msg: "Email already exists" });
         // res.render('register', {
         //   errors,
         //   name,
@@ -41,26 +46,23 @@ router.post('/register', (req, res) => {
         // });
       } else {
         const newUser = new User({
-          name,
+          name: firstName + lastName,
           email,
           password,
-          isTeacher
+          isTeacher,
         });
-
+        console.log("NEW USER: ", newUser);
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
             newUser
               .save()
-              .then(user => {
-                req.flash(
-                  'success_msg',
-                  'Account creation successful'
-                );
-                res.json(user)
+              .then((user) => {
+                req.flash("success_msg", "Account creation successful");
+                res.json(user);
               })
-              .catch(err => res.json(err));
+              .catch((err) => res.json(err));
           });
         });
       }
@@ -69,28 +71,14 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login', passport.authenticate('local'), (req, res, next) => {
-  res.json(req.user)
+router.post("/login", passport.authenticate("local"), (req, res, next) => {
+  res.json(req.user);
 });
 
 // Logout
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
-  req.flash('success_msg', 'You are logged out');
-});
-
-router.get("/user_data", (req, res) => {
-  if (!req.user) {
-    // The user is not logged in, send back an empty object
-    res.json(false);
-  } else {
-    // Otherwise send back the user's email and id
-    // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      email: req.user.email,
-      id: req.user._id
-    });
-  }
+  req.flash("success_msg", "You are logged out");
 });
 
 module.exports = router;

@@ -3,47 +3,54 @@ import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 // import LoginForm from "../LogIn/Login.js";
 // import Signup from "../LogIn/Signup.js";
-import ModalExample from "../Modal/Test.js";
+import SignIn from "../Modal/SignIn";
 
 import { Link } from "react-router-dom";
+import CreateChild from "../Modal/CreateChild";
 
 // import Modaal from "../Modal/Modal";
 
 // make a new component
 
-const Navibar = (props) => {
+const Navibar = () => {
   return (
     <>
-      <Navbar bg="light" variant="light">
+      <Navbar sideClass="navTransparent" bg="light" variant="light">
         <Navbar.Brand href="#home">LilOnes</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/">
             Home
           </Nav.Link>
           <Nav.Link as={Link} to="/about">
-            About Us
+            About
           </Nav.Link>
           <Nav.Link as={Link} to="#">
-            Contact
+            ContactUs
           </Nav.Link>
           <Nav.Link as={Link} to="/parentPortal">
             Parent Portal
           </Nav.Link>
-          <Nav.Link as={Link} to="/activites">
-            Activites 
-          </Nav.Link>
+          {/* <Nav.Link as={Link} to="/activites">
+            Activites
+          </Nav.Link> */}
           <Nav.Link as={Link} to="/teacherPortal">
             Teacher Portal
           </Nav.Link>
         </Nav>
-        <ModalExample
-        setUserState={props.setUserState}
-        ></ModalExample>
+        {/* TODO:On teacher portal hide all buttons and show create child
+            if parent go to parent portal  */}
+
+        <SignIn>}</SignIn>
+        <span>{""}</span>
+        <CreateChild></CreateChild>
       </Navbar>
     </>
   );
 };
 
+{
+
+}
 // Modal Component
 // Login Form
 

@@ -5,7 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Signup from "../LogIn/Signup.js";
 import LoginForm from "../LogIn/Login.js";
 
-const ModalExample = (props) => {
+const SignIn = (props) => {
   const { className } = props;
 
   const [modal, setModal] = useState(false);
@@ -40,14 +40,6 @@ const ModalExample = (props) => {
             <ModalBody>
               <Signup></Signup>
             </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={toggleNested}>
-                Done
-              </Button>{" "}
-              <Button color="secondary" onClick={toggleAll}>
-                All Done
-              </Button>
-            </ModalFooter>
           </Modal>
         </ModalBody>
         <ModalFooter>
@@ -57,13 +49,10 @@ const ModalExample = (props) => {
           {/* <Button color="primary" onClick={toggle}>
             Do Something
           </Button>{" "} */}
-          <Button color="secondary" onClick={toggle}>
-            LogIn
-          </Button>
         </ModalFooter>
       </Modal>
     </div>
   );
 };
 
-export default ModalExample;
+export default SignIn;
