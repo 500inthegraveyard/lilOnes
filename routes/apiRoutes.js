@@ -74,8 +74,13 @@ router.get("/report", (req, res) => {
     });
 });
 
-router.post("/report", ({ body }, res) => {
-  db.Report.create(body)
+router.post("/report/:id", ({ body }, res) => {
+  console.log("ACTIVITIES: ", body.activities);
+  db.Report.create({
+    // activites: [...body.activities],
+    activities: body.activities,
+    note: body.note,
+  })
     .then((dbreport) => {
       res.json(dbreport);
     })

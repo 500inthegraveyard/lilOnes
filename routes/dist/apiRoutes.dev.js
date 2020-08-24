@@ -68,9 +68,14 @@ router.get("/report", function (req, res) {
     res.json(err);
   });
 });
-router.post("/report", function (_ref4, res) {
+router.post("/report/:id", function (_ref4, res) {
   var body = _ref4.body;
-  db.Report.create(body).then(function (dbreport) {
+  console.log("ACTIVITIES: ", body.activities);
+  db.Report.create({
+    // activites: [...body.activities],
+    activities: body.activities,
+    note: body.note
+  }).then(function (dbreport) {
     res.json(dbreport);
   })["catch"](function (err) {
     res.json(err);

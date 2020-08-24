@@ -34,7 +34,7 @@ const StuCard = (props) => {
         </Card.Header>
       </Card.Body>
       <Card.Footer>
-        <Activities></Activities>
+        <Activities id={props.id}/>
       </Card.Footer>
     </Card>
   );

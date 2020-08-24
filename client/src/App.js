@@ -8,8 +8,6 @@ import Home from "./Pages/Home";
 import TeacherPortal from "./Pages/TeacherPortal";
 import ParentPortal from "./Pages/ParentPortal";
 import Activities from "./Pages/Activities";
-import Axios from "axios";
-import CreateChildContext from "./context/CreateChildContext";
 
 function App() {
   return (

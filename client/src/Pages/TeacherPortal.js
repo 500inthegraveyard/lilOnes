@@ -15,6 +15,7 @@ const TeacherPortal = () => {
       {students.map((student) => {
         return (
           <StuCard
+            id={student._id}
             firstName={student.firstName}
             lastName={student.lastName}
             parent1={student.parent1}

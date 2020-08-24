@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import { Form, Col } from "react-bootstrap";
 import axios from "axios";
+var dateFormat = require("dateformat");
+var now = new Date();
 
 const ModalExample = (props) => {
   const { buttonLabel, className } = props;
@@ -12,16 +14,22 @@ const ModalExample = (props) => {
   const [parent1, setParent1] = useState("");
   const [parent2, setParent2] = useState("");
   const [notes, setNotes] = useState("");
-
+  const [reports, setReports] = useState({
+    id: "",
+    date: "",
+    type: "",
+    comment: "",
+  });
   const toggle = () => setModal(!modal);
 
   let handleSubmit = () => {
-    axios.post("/api/child/01", {
+    axios.post("/api/child/:id", {
       firstName,
       lastName,
       parent1,
       parent2,
       notes,
+      // reports: [{ date: dateFormat.now, type: "", comment: "" }],
     });
   };
 
@@ -88,7 +96,7 @@ const ModalExample = (props) => {
                 }}
               />
             </Form.Group>
-
+            {/* This is where I shoud me able to save it into our db */}
             <Button onClick={handleSubmit} variant="primary" type="submit">
               Submit
             </Button>
