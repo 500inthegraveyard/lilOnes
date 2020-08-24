@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar/Navbar";
@@ -8,6 +8,7 @@ import Home from "./Pages/Home";
 import TeacherPortal from "./Pages/TeacherPortal";
 import ParentPortal from "./Pages/ParentPortal";
 import Activities from "./Pages/Activities";
+import Switch from "react-bootstrap/esm/Switch";
 
 function App() {
   return (
@@ -21,6 +22,30 @@ function App() {
       </BrowserRouter>
     </div>
   );
+}
+
+export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    }
+  }
+  render() {
+    return (
+      <div className="app">
+        <BrowserRouter>
+        <Switch>
+          <Route exact path={"/"} render = {props  (
+            <Home 
+          )} />
+        </Switch>
+        </BrowserRouter>
+      </div>
+    )
+  }
 }
 
 export default App;

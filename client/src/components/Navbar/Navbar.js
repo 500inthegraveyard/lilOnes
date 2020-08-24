@@ -21,10 +21,10 @@ const Navibar = () => {
             Home
           </Nav.Link>
           <Nav.Link as={Link} to="/about">
-            About
+            About Us
           </Nav.Link>
           <Nav.Link as={Link} to="#">
-            ContactUs
+            Contact
           </Nav.Link>
         </Nav>
         <ModalExample></ModalExample>
