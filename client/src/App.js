@@ -1,30 +1,16 @@
-<<<<<<< HEAD
-import React, { Component } from "react";
-=======
-import React, { useEffect, useState } from "react";
->>>>>>> 5b87df17cb6cdeae5083dcd1ffe5829d30fc9b47
+import React, { Component, useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar/Navbar";
 import "./components/Images/Background.css";
-<<<<<<< HEAD
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import TeacherPortal from "./Pages/TeacherPortal";
 import ParentPortal from "./Pages/ParentPortal";
 import Activities from "./Pages/Activities";
 import Switch from "react-bootstrap/esm/Switch";
-=======
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
-import TeacherPortal from "./pages/TeacherPortal";
-import ParentPortal from "./pages/ParentPortal";
-import Activities from "./pages/Activities";
 import axios from "axios";
-import Login from "./components/LogIn/Login";
-
-
->>>>>>> 5b87df17cb6cdeae5083dcd1ffe5829d30fc9b47
+import Login from "./Login/Login.js";
 
 function App() {
 
@@ -73,7 +59,7 @@ function App() {
   }
 
 
-export default class App extends Component {
+/* export default class App extends Component {
   constructor() {
     super();
 
@@ -95,6 +81,6 @@ export default class App extends Component {
       </div>
     )
   }
-}
+} */
 
 export default App;
