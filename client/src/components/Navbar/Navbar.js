@@ -40,7 +40,7 @@ const Navibar = () => {
         {/* TODO:On teacher portal hide all buttons and show create child
             if parent go to parent portal  */}
 
-        <SignIn>}</SignIn>
+        <SignIn>{""}}</SignIn>
         <span>{""}</span>
         <CreateChild></CreateChild>
       </Navbar>

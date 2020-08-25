@@ -20,6 +20,10 @@ const LoginForm = ({ onSubmit }) => {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        //find a way to distinguish parent from teacher
+              //if parent:  window.location.href="/parentPortal" 
+      //if teacher:       window.location.href="/teacherPortal" 
+        window.location.href="/teacherPortal"
       })
   }
 
@@ -47,7 +51,7 @@ const LoginForm = ({ onSubmit }) => {
       <Form.Group controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Remember Me!" />
       </Form.Group>
-      <Button variant="primary" type="submit" block>
+      <Button onClick = {userLogin} variant="primary" type="submit" block>
         Login
       </Button>
     </Form>

@@ -38,6 +38,13 @@ function SignUp() {
     axios.post(`/users/register`, { userLogin }).then((res) => {
       console.log(res);
       console.log(res.data);
+
+      //needs to be if statement, there should be a parameter to know if teacher or parent
+        //find a way to distinguish parent from teacher
+              //if parent:  window.location.href="/parentPortal" 
+      //if teacher:       window.location.href="/teacherPortal" 
+      window.location.href="/teacherPortal"
+
     });
   };
 
@@ -113,7 +120,7 @@ function SignUp() {
             {errors.password}
           </Form.Control.Feedback>
    
-          <Button className="top-1" type="submit">
+          <Button onClick={userLogin} className="top-1" type="submit">
             Submit form
           </Button>
         </Form>

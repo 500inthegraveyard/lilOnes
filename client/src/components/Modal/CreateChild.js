@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import { Form, Col } from "react-bootstrap";
 import axios from "axios";
-var dateFormat = require("dateformat");
+//var dateFormat = require("dateformat");
 var now = new Date();
 
 const ModalExample = (props) => {
