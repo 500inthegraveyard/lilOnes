@@ -35,8 +35,8 @@ export default class ParentPortal extends Component {
         {console.log(this.state.data)}
         {this.state.error !== "" && (
           <h1>
-            WOAH YOU SHOULD NOT BE HERE. CLICK <a href="/">HERE</a> TO GO BACK
-            TO WHERE YOU SHOULD BE?
+            {/* WOAH YOU SHOULD NOT BE HERE. CLICK <a href="/">HERE</a> TO GO BACK
+            TO WHERE YOU SHOULD BE? */}
           </h1>
         )}
         {this.state.data !== {} && (
