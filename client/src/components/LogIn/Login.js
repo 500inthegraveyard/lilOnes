@@ -15,8 +15,8 @@ const LoginForm = ({ onSubmit }) => {
       email,
       password
     };
-
-    axios.post(`/users/login`,  userDeets )
+    console.log("USER OBJECT: ", userDeets)
+    axios.post(`/users/login`, userDeets )
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -25,7 +25,7 @@ const LoginForm = ({ onSubmit }) => {
 
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form noValidate onSubmit={userLogin}>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
