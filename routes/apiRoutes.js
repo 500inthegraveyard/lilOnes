@@ -13,22 +13,6 @@ router.get("/child", (req, res) => {
     });
 });
 
-// router.put("/child/:id", ({ body, params }, res) => {
-//   db.Child.findOne(body)
-//     .then(({ _id }) => {
-//       // console.log("ParentID",params)
-//       // console.log(_id)
-//       db.User.findByIdAndUpdate(params.id , { $push: { children: _id } }, { new: true })
-//       .then(dbchild => {
-//         res.json(dbchild);
-//       })
-//     })
-
-//     .catch(err => { console.log(err)
-//       res.json(err);
-//     });
-// });
-
 router.post("/child/:id", ({ body, params }, res) => {
   db.Child.create(body)
     .then(({ _id }) => {

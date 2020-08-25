@@ -1,14 +1,9 @@
 "use strict";
 
-var mongoose = require("mongoose"); // const { report } = require("../routes/apiRoutes");
-// const { Child } = require(".");
-
+var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 var reportSchema = new mongoose.Schema({
-  // day: String,
-  // food: String,
-  // nap: Number,
   date: {
     type: Date,
     "default": function _default() {
@@ -16,7 +11,11 @@ var reportSchema = new mongoose.Schema({
     }
   },
   activities: String,
-  note: String
+  note: String,
+  children: [{
+    type: Schema.Types.ObjectId,
+    ref: "Child"
+  }]
 });
 var Report = mongoose.model("Report", reportSchema);
 module.exports = Report;
