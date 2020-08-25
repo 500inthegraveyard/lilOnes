@@ -6,6 +6,7 @@ const passport = require("passport");
 
 // Load User model
 const User = require("../models/User");
+const { restart } = require("nodemon");
 
 // Register
 router.post("/register", (req, res) => {
@@ -17,14 +18,6 @@ router.post("/register", (req, res) => {
     isTeacher,
   } = req.body.userLogin;
   let errors = [];
-
-  // if (!name || !email || !password) {
-  //   errors.push({ msg: 'Please enter all fields' });
-  // }
-
-  // if (password.length < 6) {
-  //   errors.push({ msg: 'Password must be at least 6 characters' });
-  // }
 
   if (errors.length > 0) {
     // res.render('register', {
@@ -68,6 +61,16 @@ router.post("/register", (req, res) => {
       }
     });
   }
+});
+
+router.get("/parents", (req, res) => {
+  User.find({})
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 // Login

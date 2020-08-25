@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import { Form, Col } from "react-bootstrap";
 import axios from "axios";
@@ -7,6 +7,13 @@ var now = new Date();
 
 const ModalExample = (props) => {
   const { buttonLabel, className } = props;
+  const [parents, setParents] = useState([]);
+  useEffect(() => {
+    axios.get("/users/parents").then((response) => {
+      console.log(response);
+      setParents(response.data);
+    });
+  }, []);
 
   const [modal, setModal] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -14,6 +21,7 @@ const ModalExample = (props) => {
   const [parent1, setParent1] = useState("");
   const [parent2, setParent2] = useState("");
   const [notes, setNotes] = useState("");
+  const [parent1_id, setParent1_id] = useState("");
   const [reports, setReports] = useState({
     id: "",
     date: "",
@@ -27,6 +35,7 @@ const ModalExample = (props) => {
       firstName,
       lastName,
       parent1,
+      parent1_id,
       parent2,
       notes,
       // reports: [{ date: dateFormat.now, type: "", comment: "" }],
@@ -68,13 +77,25 @@ const ModalExample = (props) => {
 
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Parent 1</Form.Label>
-              <Form.Control
+              {/* <Form.Control
                 onChange={(e) => {
                   setParent1(e.target.value);
                 }}
                 as="textarea"
                 rows="3"
-              />
+              /> */}
+              <Form.Control
+                as="select"
+                onChange={(e) => {
+                  console.log(e);
+                  setParent1(e.currentTarget.textContent);
+                  setParent1_id(e.target.value);
+                }}
+              >
+                {parents.map((parent) => {
+                  return <option value={parent._id}>{parent.name}</option>;
+                })}
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="exampleForm.ControlTextarea1">
