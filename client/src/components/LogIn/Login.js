@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
@@ -7,25 +7,26 @@ const LoginForm = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
-  let userLogin = event => {
+  let userLogin = (event) => {
     event.preventDefault();
 
     const userDeets = {
       email,
-      password
+      password,
     };
 
-    axios.post(`/users/login`,  userDeets )
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-  }
-
+    axios.post(`/users/login`, userDeets).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+  };
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form
+      onSubmit={(e) => {
+        userLogin(e);
+      }}
+    >
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
@@ -55,13 +56,6 @@ const LoginForm = ({ onSubmit }) => {
 };
 export default LoginForm;
 
-
-
-
-
-
-
-
 // import React, { useState } from "react";
 // import {Form, Button } from "react-bootstrap";
 // import "bootstrap/dist/css/bootstrap.css";
@@ -77,7 +71,7 @@ export default LoginForm;
 
 //   //   const user = {
 //   //     email:"",
-//   //     password:"" 
+//   //     password:""
 //   //   };
 
 //   //   axios.post(`http://localhost:3001/users/login`, { user })
@@ -86,7 +80,6 @@ export default LoginForm;
 //   //       console.log(res.data);
 //   //     })
 //   // }
-
 
 //   return (
 //     <Form onSubmit={onSubmit}>
@@ -109,7 +102,7 @@ export default LoginForm;
 //           onChange={(e) => setPassword(e.target.value),
 //             console.log(password)
 //           }
-          
+
 //         />
 //       </Form.Group>
 //       <Form.Group controlId="formBasicCheckbox">

@@ -88,12 +88,18 @@ const ModalExample = (props) => {
                 as="select"
                 onChange={(e) => {
                   console.log(e);
-                  setParent1(e.currentTarget.textContent);
+                  setParent1(
+                    document.querySelector("option:checked").textContent
+                  );
                   setParent1_id(e.target.value);
                 }}
               >
                 {parents.map((parent) => {
-                  return <option value={parent._id}>{parent.name}</option>;
+                  return (
+                    <option value={parent._id} data-name={parent.name}>
+                      {parent.name}
+                    </option>
+                  );
                 })}
               </Form.Control>
             </Form.Group>

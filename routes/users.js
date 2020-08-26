@@ -74,8 +74,12 @@ router.get("/parents", (req, res) => {
 });
 
 // Login
-router.post("/login", passport.authenticate("local"), (req, res, next) => {
-  res.json(req.user);
+// router.post("/login", passport.authenticate("local"), (req, res, next) => {
+//   res.json(req.user);
+// });
+router.post("/login", passport.authenticate("local"), {
+  successRedirect: "/",
+  failureRedirect: "/login",
 });
 
 // Logout

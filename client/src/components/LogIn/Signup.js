@@ -38,6 +38,12 @@ function SignUp() {
     axios.post(`/users/register`, { userLogin }).then((res) => {
       console.log(res);
       console.log(res.data);
+
+      //needs to be if statement, there should be a parameter to know if teacher or parent
+        //find a way to distinguish parent from teacher
+              //if parent:  window.location.href="/parentPortal" 
+      //if teacher:       window.location.href="/teacherPortal" 
+      window.location.href="/teacherPortal"
     });
   };
 
@@ -62,7 +68,7 @@ function SignUp() {
         <Form noValidate onSubmit={userLogin}>
           {/* <Form.Row> */}
           {/* <Form.Group as={Col} md="4" controlId="validationFormik01"> */}
-          <Form.Label>First name</Form.Label>
+          <Form.Label>First name</Form.Label >
           <Form.Control
             type="text"
             name="firstName"
