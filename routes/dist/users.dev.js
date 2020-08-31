@@ -10,7 +10,10 @@ var passport = require("passport"); // const db = require("../routes");
 // Load User model
 
 
-var User = require("../models/User"); // Register
+var User = require("../models/User");
+
+var _require = require("nodemon"),
+    restart = _require.restart; // Register
 
 
 router.post("/register", function (req, res) {
@@ -20,12 +23,7 @@ router.post("/register", function (req, res) {
       email = _req$body$userLogin.email,
       password = _req$body$userLogin.password,
       isTeacher = _req$body$userLogin.isTeacher;
-  var errors = []; // if (!name || !email || !password) {
-  //   errors.push({ msg: 'Please enter all fields' });
-  // }
-  // if (password.length < 6) {
-  //   errors.push({ msg: 'Password must be at least 6 characters' });
-  // }
+  var errors = [];
 
   if (errors.length > 0) {// res.render('register', {
     //   errors,
@@ -70,6 +68,13 @@ router.post("/register", function (req, res) {
       }
     });
   }
+});
+router.get("/parents", function (req, res) {
+  User.find({}).then(function (users) {
+    res.json(users);
+  })["catch"](function (err) {
+    console.log(err);
+  });
 }); // Login
 
 router.post("/login", passport.authenticate("local"), function (req, res, next) {

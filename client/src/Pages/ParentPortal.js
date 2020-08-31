@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-
-import {
-  Card,
-  Button,
-  CardImg,
-  CardTitle,
-  CardDeck,
-  CardSubtitle,
-  CardBody,
-} from "reactstrap";
+import ParentReport from "../components/Modal/ParentReport";
+import { Card, Button, CardImg, CardTitle, CardBody } from "reactstrap";
 import { FaReadme } from "react-icons/fa";
 
 export default class ParentPortal extends Component {
@@ -48,9 +40,9 @@ export default class ParentPortal extends Component {
             />
             <CardBody className="text-center">
               <CardTitle>{"Student Name"}</CardTitle>
-              <Button>
-                <FaReadme></FaReadme>
-              </Button>
+             
+                  <ParentReport></ParentReport>
+              
             </CardBody>
           </Card>
         )}

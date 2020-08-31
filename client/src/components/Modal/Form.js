@@ -34,25 +34,9 @@ class Form extends React.Component {
     }
   };
 
-  // deteteRow = (index) => {
-  //   this.setState({
-  //     activities: this.state.activities.filter((s, sindex) => index !== sindex),
-  //   });
-  // };
   handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (this.state.date === "" || this.state.description === "") {
-    //   return false;
-    // }
-    // for (var i = 0; i < this.state.activities.length; i++) {
-    //   if (
-    //     this.state.activities[i].activities === "" ||
-    //     this.state.activities[i].notes === ""
-    //   ) {
-    //     return false;
-    //   }
-    // }
     console.log("CHILD ID: ", this.props);
 
     const { activities, note, currentActivity } = this.state;
@@ -81,7 +65,7 @@ class Form extends React.Component {
   }
 
   render() {
-    let { activityCount } = this.state; //let { notes, date, description, activities } = this.state
+    let { activityCount } = this.state;
     return (
       <div className="content">
         <form onSubmit={this.handleSubmit}>
@@ -133,7 +117,7 @@ class Form extends React.Component {
                 </div>
                 <div className="card-footer text-center">
                   <button
-                    onClick={this.handleSubmit}
+                    onClick={this.handleSubmit && this.handleCloseModal}
                     variant="primary"
                     type="submit"
                   >

@@ -13,22 +13,6 @@ router.get("/child", (req, res) => {
     });
 });
 
-// router.put("/child/:id", ({ body, params }, res) => {
-//   db.Child.findOne(body)
-//     .then(({ _id }) => {
-//       // console.log("ParentID",params)
-//       // console.log(_id)
-//       db.User.findByIdAndUpdate(params.id , { $push: { children: _id } }, { new: true })
-//       .then(dbchild => {
-//         res.json(dbchild);
-//       })
-//     })
-
-//     .catch(err => { console.log(err)
-//       res.json(err);
-//     });
-// });
-
 router.post("/child/:id", ({ body, params }, res) => {
   db.Child.create(body)
     .then(({ _id }) => {
@@ -89,7 +73,7 @@ router.post("/report/:id", ({ body }, res) => {
     });
 });
 
-// FIXME: Delete route for a report
+
 // router.delete("/report", ({ body }, res) => {
 //   db.Report.findOneAndDelete({ Food: 'Chicken' }, function (err) {
 //     if (err) console.log(err);
