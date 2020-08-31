@@ -45,10 +45,10 @@ const ModalExample = (props) => {
   return (
     <div>
       <Button color="danger" onClick={toggle}>
-        Create
+        Enroll Child
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>{"ChildName Should Go Here"}</ModalHeader>
+        <ModalHeader toggle={toggle}>{""}</ModalHeader>
         <ModalBody>
           <Form>
             <Form.Row>

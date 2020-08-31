@@ -21,12 +21,7 @@ const Navibar = () => {
           <Nav.Link as={Link} to="/">
             Home
           </Nav.Link>
-          <Nav.Link as={Link} to="/about">
-            About
-          </Nav.Link>
-          <Nav.Link as={Link} to="#">
-            ContactUs
-          </Nav.Link>
+          
           <Nav.Link as={Link} to="/parentPortal">
             Parent Portal
           </Nav.Link>
@@ -34,7 +29,7 @@ const Navibar = () => {
             Activites
           </Nav.Link> */}
           <Nav.Link as={Link} to="/teacherPortal">
-            Teacher Portal
+            Teacher Class Portal
           </Nav.Link>
         </Nav>
         {/* TODO:On teacher portal hide all buttons and show create child
