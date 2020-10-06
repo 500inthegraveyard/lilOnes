@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import { Form, Col } from "react-bootstrap";
 import axios from "axios";
-var dateFormat = require("dateformat");
+//var dateFormat = require("dateformat");
 var now = new Date();
 
 const ModalExample = (props) => {
@@ -45,10 +45,10 @@ const ModalExample = (props) => {
   return (
     <div>
       <Button color="danger" onClick={toggle}>
-        Create
+        Enroll Child
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>{"ChildName Should Go Here"}</ModalHeader>
+        <ModalHeader toggle={toggle}>{""}</ModalHeader>
         <ModalBody>
           <Form>
             <Form.Row>

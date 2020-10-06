@@ -48,7 +48,7 @@ const LoginForm = ({ onSubmit }) => {
       <Form.Group controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Remember Me!" />
       </Form.Group>
-      <Button variant="primary" type="submit" block>
+      <Button onClick = {userLogin} variant="primary" type="submit" block>
         Login
       </Button>
     </Form>

@@ -119,7 +119,7 @@ function SignUp() {
             {errors.password}
           </Form.Control.Feedback>
    
-          <Button className="top-1" type="submit">
+          <Button onClick={userLogin} className="top-1" type="submit">
             Submit form
           </Button>
         </Form>
